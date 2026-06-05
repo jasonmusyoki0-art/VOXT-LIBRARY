@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>VOXT Login</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/login.css">
+
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="images/favicon.svg">
+  <meta name="theme-color" content="#6A0DAD">
+  <meta name="description" content="The VOXT Chronicles — immersive reader universe.">
+  <meta property="og:title" content="The VOXT Chronicles">
+  <meta property="og:description" content="Dive into interconnected stories and community.">
+
+</head>
+
+<body>
+
+<div class="auth-container">
+
+<div class="auth-box">
+
+<h1>VOXT Login</h1>
+
+<p class="auth-subtitle">THE VOXT CHRONICLES</p>
+
+<p class="auth-description">Enter the Astral Archives</p>
+
+<div class="auth-fields">
+  <input id="username" type="text" placeholder="Username">
+  <input id="email" type="email" placeholder="Email">
+  <input id="password" type="password" placeholder="Password">
+</div>
+
+<div class="auth-actions">
+  <button type="button" onclick="signUp()">Create Account</button>
+  <button type="button" onclick="signIn()">Login</button>
+</div>
+
+</div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script type="module" src="js/supabase.js"></script>
+<script type="module" src="js/auth.js"></script>
+
+</body>
+</html>

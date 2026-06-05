@@ -1,0 +1,16 @@
+# Ignore editor and OS artifacts
+.DS_Store
+Thumbs.db
+*.log
+*.tmp
+*.swp
+*.swo
+node_modules/
+.vscode/
+*.code-workspace
+
+# Ignore local audio or exports not part of source control
+*.wav
+
+# Ignore system files
+desktop.ini
