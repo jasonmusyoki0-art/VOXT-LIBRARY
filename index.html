@@ -4,6 +4,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>
+if(window.location.pathname.endsWith("/index.html")){
+  window.location.replace("./" + window.location.search + window.location.hash);
+}
+</script>
 
 <title>VOXT Library</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -37,14 +42,14 @@
       <a href="#books">Books</a>
       <a href="#about">About</a>
       <a href="#subscribe">Subscribe</a>
-      <a id="admin-link" href="admin.html" style="display:none">Dashboard</a>
+      <a id="admin-link" href="admin/" style="display:none">Dashboard</a>
     </nav>
 
     <div class="user-menu">
       <button id="profile-btn">👤 <span id="username-display">Loading...</span></button>
       <div id="profile-dropdown">
         <a href="#profile-section">Profile</a>
-        <a id="dashboard-link" href="admin.html">Dashboard</a>
+        <a id="dashboard-link" href="admin/">Dashboard</a>
         <button type="button" onclick="logout()">Logout</button>
       </div>
     </div>

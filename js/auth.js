@@ -1,3 +1,11 @@
+function rootRoute(path = ""){
+  const nestedRoute =
+    window.location.pathname.endsWith("/login/") ||
+    window.location.pathname.endsWith("/login/index.html");
+
+  return nestedRoute ? `../${path}` : path || "./";
+}
+
 window.signUp = async function(){
 
   const email =
@@ -88,7 +96,7 @@ async function(){
     localStorage.setItem('voxt-music-autoplay','1');
     localStorage.setItem('voxt-music-state','playing');
   }catch(e){}
-  window.location.href = "index.html";
+  window.location.href = rootRoute();
 
 }
 

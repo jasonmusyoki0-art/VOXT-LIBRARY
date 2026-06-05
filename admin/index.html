@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>VOXT Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+
+  <link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
+  <link rel="shortcut icon" href="../favicon.ico">
+  <link rel="apple-touch-icon" href="../images/favicon.svg">
+  <meta name="theme-color" content="#6A0DAD">
+  <meta name="description" content="The VOXT Chronicles — immersive reader universe.">
+  <meta property="og:title" content="The VOXT Chronicles">
+  <meta property="og:description" content="Dive into interconnected stories and community.">
+</head>
+<body>
+
+<header>
+  <div class="brand-group">
+    <div>
+      <h1>VOXT ADMIN</h1>
+      <p class="brand-tag">Command Center</p>
+    </div>
+  </div>
+
+  <div class="site-controls admin-controls">
+    <nav>
+      <a href="../">Home</a>
+      <a href="../voxt/">Library</a>
+      <a id="admin-link" href="../admin/" style="display:none">Dashboard</a>
+    </nav>
+
+    <div class="notification-menu">
+      <button id="notif-button">🔔 <span id="notif-count">0</span></button>
+      <div id="notification-dropdown" class="notification-dropdown">
+        <div class="notification-title">Notifications</div>
+        <div id="notification-list">No notifications</div>
+      </div>
+    </div>
+
+    <div class="user-menu">
+      <button id="profile-btn">👤 <span id="username-display">Loading...</span></button>
+      <div id="profile-dropdown">
+        <a href="../">Profile</a>
+        <a id="dashboard-link" href="../admin/">Dashboard</a>
+        <button type="button" onclick="logout()">Logout</button>
+      </div>
+    </div>
+
+    <button id="music-toggle">🎵</button>
+    <button id="theme-toggle">🌙</button>
+  </div>
+</header>
+
+<main>
+
+  <section class="admin-dashboard hero-dashboard">
+    <div class="dashboard-header">
+      <div>
+        <p class="brand-tag">VOXT ADMIN COMMAND CENTER</p>
+        <h2>Live Analytics & Insights</h2>
+      </div>
+      <div class="dashboard-badge">Pro Stream Mode</div>
+    </div>
+
+    <div class="dashboard-metrics">
+      <div class="metric-card">
+        <div class="metric-label">📚 Total Books</div>
+        <div id="totalBooks">0</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">👤 Readers</div>
+        <div id="totalReaders">0</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">❤️ Likes</div>
+        <div id="totalLikes">0</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">💬 Comments</div>
+        <div id="totalComments">0</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">📧 Subscribers</div>
+        <div id="totalSubscribers">0</div>
+      </div>
+    </div>
+
+    <section class="dashboard-book-stats">
+      <div class="section-header">
+        <h3>Book performance</h3>
+        <p>Live counts from Supabase by title.</p>
+      </div>
+      <div id="book-stats-list" class="book-stats-grid"></div>
+    </section>
+
+    <section class="dashboard-chart">
+      <div class="section-header">
+        <h3>Views by Book</h3>
+      </div>
+      <div id="views-chart" class="views-chart"></div>
+    </section>
+
+    <section class="notification-create">
+      <h3>Publish Notification</h3>
+      <input id="notification-title" type="text" placeholder="Book 6 Released">
+      <button type="button" id="publish-notification">Publish</button>
+    </section>
+
+    <section class="dashboard-book-stats">
+      <div class="section-header">
+        <h3>Book performance</h3>
+        <p>Live counts from Supabase by title.</p>
+      </div>
+      <div id="book-stats-list" class="book-stats-grid"></div>
+    </section>
+
+    <div class="featured-panel">
+      <div class="featured-panel-card">
+        <div class="panel-title">🔥 Most Popular Book</div>
+        <div id="topBookHeadline" class="panel-headline">VOXT: Astral Heir</div>
+        <div class="panel-progress">
+          <div id="topBookProgress"></div>
+        </div>
+      </div>
+      <div class="featured-panel-card comments-feed">
+        <div class="panel-title">Recent Comments Feed</div>
+        <ul>
+          <li>John: Amazing book</li>
+          <li>Mary: Waiting for book 6</li>
+          <li>Alex: Kael is awesome</li>
+        </ul>
+      </div>
+    </div>
+
+  </section>
+
+</main>
+
+<footer>
+  <p>Private admin dashboard — not for public use.</p>
+</footer>
+
+<audio id="voxt-theme" preload="none" loop>
+  <source src="../assets/voxt-theme.mp3" type="audio/mpeg">
+  <source src="../assets/voxt-theme.wav" type="audio/wav">
+  Your browser does not support the audio element.
+</audio>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script type="module" src="../js/supabase.js"></script>
+<script type="module" src="../js/admin.js"></script>
+
+</body>
+</html>

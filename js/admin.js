@@ -1,10 +1,17 @@
+function routeTo(path = ""){
+  return window.location.pathname.endsWith("/admin/") ||
+    window.location.pathname.endsWith("/admin/index.html")
+    ? `../${path}`
+    : path || "./";
+}
+
 async function checkAdmin(){
   const {
     data:{ user }
   } = await supabaseClient.auth.getUser();
 
   if(!user){
-    window.location.href = "login.html";
+    window.location.href = routeTo("login/");
     return;
   }
 
@@ -28,7 +35,7 @@ async function checkAdmin(){
     document.body.appendChild(overlay);
 
     setTimeout(() => {
-      window.location.href = "index.html";
+      window.location.href = routeTo();
     }, 3000);
 
     return;

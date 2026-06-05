@@ -1,8 +1,7 @@
-function routeTo(path){
-  return window.location.pathname.endsWith("/voxt/") ||
-    window.location.pathname.endsWith("/voxt/index.html")
+function routeTo(path = ""){
+  return /\/(admin|login|voxt)\/(?:index\.html)?$/.test(window.location.pathname)
     ? `../${path}`
-    : path;
+    : path || "./";
 }
 
 async function checkSession(){
@@ -16,7 +15,7 @@ async function checkSession(){
   if(!session){
 
     window.location.href =
-      routeTo("login.html");
+      routeTo("login/");
 
     return;
 
@@ -28,7 +27,7 @@ checkSession();
 
 window.logout = async function(){
   await supabaseClient.auth.signOut();
-  window.location.href = routeTo("login.html");
+  window.location.href = routeTo("login/");
 };
 
 function applyTheme(){
