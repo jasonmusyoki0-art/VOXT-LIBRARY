@@ -42,7 +42,13 @@ window.isAdmin = async function(){
 
 window.logout = async function(){
   await supabaseClient.auth.signOut();
-  window.location.href = "login.html";
+  const loginPath =
+    window.location.pathname.endsWith("/voxt/") ||
+    window.location.pathname.endsWith("/voxt/index.html")
+      ? "../login.html"
+      : "login.html";
+
+  window.location.href = loginPath;
 };
 
  
