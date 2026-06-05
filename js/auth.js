@@ -1,13 +1,18 @@
 window.signUp = async function(){
 
   const email =
-    document.getElementById("email").value;
+    document.getElementById("email").value.trim().toLowerCase();
 
   const password =
     document.getElementById("password").value;
 
   const username =
-    document.getElementById("username").value;
+    document.getElementById("username").value.trim();
+
+  if(!username || !email || !password){
+    alert("Enter username, email, and password.");
+    return;
+  }
 
   const { data, error } =
     await supabaseClient.auth.signUp({
@@ -26,7 +31,12 @@ window.signUp = async function(){
   }
 
   const userId =
-    data.user.id;
+    data.user && data.user.id;
+
+  if(!userId){
+    alert("Account created. Check your email to confirm it before logging in.");
+    return;
+  }
 
   await supabaseClient
     .from("profiles")
@@ -43,15 +53,17 @@ window.signUp = async function(){
     }]);
 
   alert(
-    "Account Created!"
+    data.session
+      ? "Account Created!"
+      : "Account created. Check your email to confirm it before logging in."
   );
 
 }
 
 window.signIn =
 async function(){
-  const email = document.getElementById("email").value.trim();
-  const password = document.getElementById("password").value.trim();
+  const email = document.getElementById("email").value.trim().toLowerCase();
+  const password = document.getElementById("password").value;
 
   if(!email || !password){
     alert("Enter email and password.");
