@@ -130,7 +130,7 @@ function setupNotificationDropdown(){
 const releaseDates = {  'astral-heir': '2026-06-01',
   'eleventh-voxt': '2026-06-12',
   'aeron-vaultis': '2026-06-19',
-  'lady-nyxora': '2026-06-26',
+  'lady-nyxora': '2026-06-06',
   'four-brothers': '2026-07-03'
 };
 
@@ -493,6 +493,18 @@ url,
 bookId,
 bookSlug
 ){
+
+  const isExternalUrl =
+    /^https?:\/\//i.test(url) &&
+    !/online\.fliphtml5\.com/i.test(url);
+
+  if(isExternalUrl){
+    window.currentBookId = bookId;
+    window.currentBookSlug = bookSlug;
+    await incrementViews(bookId);
+    window.location.href = url;
+    return;
+  }
 
   const titleElement =
     document.getElementById(
